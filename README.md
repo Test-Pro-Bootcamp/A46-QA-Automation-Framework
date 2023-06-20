@@ -1,1 +1,1 @@
-QA-Automation-Framework-Template
+A46-QA-Automation-Framework
