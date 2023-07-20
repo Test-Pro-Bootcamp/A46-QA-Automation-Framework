@@ -10,7 +10,7 @@ import java.time.Duration;
 
 public class Homework16 extends BaseTest {
     @Test
-    public void RegistrationNavigation(){
+    public void registrationNavigation(){
 
 
         ChromeOptions options = new ChromeOptions();
@@ -22,19 +22,19 @@ public class Homework16 extends BaseTest {
         //step1 Get URL
         String url = "https://qa.koel.app/";
         driver.get(url);
-
         //step2 Click Registration
         WebElement registrationLink = driver.findElement(By.id("hel"));
         registrationLink.click();
-        //step 3 Enter email
+        //step3 Assert
+        Assert.assertEquals(driver.getCurrentUrl(),"https://qa.koel.app/registration.php");
+        //step4 Enter email
         WebElement email = driver.findElement(By.cssSelector("[type='email']"));
         email.click();
-        email.sendKeys("daria23@testpro.io");
-        //step4 click Register
+        email.sendKeys("daria25@testpro.io");
+        //step5 click Register
         WebElement submit = driver.findElement(By.cssSelector("[type = 'submit']"));
         submit.click();
-
-        //Step5 logIn message
+        //Step6 LogIn message
         WebElement message = driver.findElement(By.className("button"));
         message.click();
         driver.quit();
