@@ -1,25 +1,62 @@
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class LoginTests extends BaseTest {
     @Test
-    public void LoginEmptyEmailPasswordTest() {
+    public void loginEmptyEmailPasswordTest() {
+        //Assertion
+        Assert.assertEquals(driver.getCurrentUrl(),"https://qa.koel.app/");
+    }
 
-//      Added ChromeOptions argument below to fix websocket error
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
+    @Test (description = "Test is checking happy path Login with correct details")
+    public void validLoginTest()  {
+//step2. Enter Email
+        enterEmail("demo@class.com");
+//step3. Enter Password
+        enterPassword("te$t$tudent");
+//step4. Click submit
+        clickSubmit();
+//Assertion - Compare expect and actual
+        WebElement avatar= driver.findElement(By.className("avatar"));
+        Assert.assertTrue(avatar.isDisplayed());
+    }
 
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        String url = "https://qa.koel.app/";
-        driver.get(url);
-        Assert.assertEquals(driver.getCurrentUrl(), url);
-        driver.quit();
+    @Test
+    public void inValidPasswordTest() throws InterruptedException {
+//step2. Enter Email
+        enterEmail("demo@class.com");
+//step3. Enter Password
+        enterPassword("");
+//step4. Click submit
+        clickSubmit();
+//Assertion - Compare expected and actual
+        Thread.sleep(2000);
+        Assert.assertEquals(driver.getCurrentUrl(), baseUrl);
+    }
+    @Test
+    public void changeUserName() throws InterruptedException {
+//step2. Enter Email
+        enterEmail("demo@class.com");
+//step3. Enter Password
+        enterPassword("te$t$tudent");
+//step4. Click submit
+        clickSubmit();
+//step5. Click on Avatar
+        Thread.sleep(3000);
+        WebElement avatar = driver.findElement(By.cssSelector("span[class='name']"));
+        avatar.click();
+//Step6.Enter Name, Password, New Password, email
+        enterText(By.id("inputProfileName"),getRandomString());
+        enterText(By.id("inputProfileCurrentPassword"),"te$t$tudent");
+        enterText(By.id("inputProfileNewPassword"),"te$t$tudent");
+        enterText(By.id("inputProfileEmail"),"demo@class.com");
+//Step7. Click Submit  - To be completed
+//        clickSubmit();
+//Step8. Assertion - verify the name  - To be completed
+
     }
 }
