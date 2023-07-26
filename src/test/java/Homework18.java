@@ -7,8 +7,8 @@ public class Homework18 extends BaseTest {
     @Test
     public void playSong() {
 
-        String url = "https://qa.koel.app/";
-        driver.get(url);
+//        String url = "https://qa.koel.app/";
+//        driver.get(url);
         navigatetoPage();
         provideEmail("daria.pavlyuk@testpro.io");
         providePassword("te$t$tudent");
@@ -18,6 +18,7 @@ public class Homework18 extends BaseTest {
         viewAllSearchResults();
         selectFirstSongResult();
         setButtonPlaySong();
+        Assert.assertTrue(isDisplayedPlayingSong());
     }
 
     //step1
@@ -62,14 +63,16 @@ public class Homework18 extends BaseTest {
 
     //step8
         public void setButtonPlaySong () {
-            WebElement buttonPlaySong = driver.findElement(By.cssSelector("[data-testid = 'play-next-btn']"));
+            WebElement buttonPlayNextSong = driver.findElement(By.cssSelector("[data-testid='play-next-btn']"));
+            WebElement buttonPlaySong = driver.findElement(By.cssSelector("[data-testid='play-btn']"));
+            buttonPlayNextSong.click();
             buttonPlaySong.click();
+
         }
         //step9
         public boolean isDisplayedPlayingSong () {
-            WebElement songIsPlaying = driver.findElement(By.cssSelector("data-tested = sound-bar-play"));
+            WebElement songIsPlaying = driver.findElement(By.cssSelector("[data-testid='sound-bar-play']"));
             return songIsPlaying.isDisplayed();
-
 
         }
 
