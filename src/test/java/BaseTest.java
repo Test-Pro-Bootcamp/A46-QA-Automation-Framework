@@ -13,6 +13,7 @@ public class BaseTest {
     public static WebDriver driver;
     @BeforeSuite
     static void setupClass() {
+
         WebDriverManager.chromedriver().setup();
     }
      @BeforeMethod
@@ -30,6 +31,7 @@ public class BaseTest {
 
     @AfterMethod
     public void tearDown(){
+
         driver.quit();
     }
 }

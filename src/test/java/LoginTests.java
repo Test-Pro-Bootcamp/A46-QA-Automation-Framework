@@ -10,7 +10,7 @@ import java.time.Duration;
 
 public class LoginTests extends BaseTest {
     @Test
-            public void LoginValidEmailValidPassword() {
+            public void loginValidEmailValidPassword() {
 
         openloginUrl();
         String url = "https://qa.koel.app/";
