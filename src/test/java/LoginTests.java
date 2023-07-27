@@ -47,6 +47,29 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(), url);
         driver.quit();
     }
+     @Test (dataProvider = "invalidLoginProviders")
+    public void invalidPasswordTest(String email, String password) {
+    enterEmail(email);
+    enterPassword(password);
+    clickSubmit();
+    Assert.assertEquals(driver.getCurrentUrl(),"https://qa.koel.app/");
 
+    }
+    public void clickSubmit() {
+        WebElement submitButton = driver.findElement(By.cssSelector("[type = 'submit']"));
+        submitButton.click();
+    }
+
+    public void enterPassword(String password) {
+        WebElement passwordField = driver.findElement(By.cssSelector("[type = 'password']"));
+        passwordField.click();
+        passwordField.sendKeys("te$t$tudent");
+    }
+
+    public void enterEmail(String email) {
+        WebElement emailField = driver.findElement(By.cssSelector("[type ='email']"));
+        emailField.click();
+        emailField.sendKeys("daria.pavlyuk@testpro.io");
+    }
 
 }
