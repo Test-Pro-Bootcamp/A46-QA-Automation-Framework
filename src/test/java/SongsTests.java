@@ -1,9 +1,18 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.time.Duration;
+import java.util.NoSuchElementException;
+import java.util.concurrent.locks.Condition;
 
 public class SongsTests extends BaseTest {
 
@@ -23,7 +32,7 @@ public class SongsTests extends BaseTest {
                 .keyDown(Keys.ENTER)
                 .perform();
         // click View All
-        WebElement viewAllBtn = driver.findElement(By.cssSelector("[data-test='view-all-songs-btn']"));
+        WebElement viewAllBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[data-test='view-all-songs-btn']")));
         viewAllBtn.click();
         // click first song in the list
         WebElement songInResults = driver.findElement(By.cssSelector(".search-results .song-item .title"));
@@ -53,5 +62,21 @@ public class SongsTests extends BaseTest {
         WebElement songName = driver.findElement(By.cssSelector("#playlistWrapper .song-item .title"));
         String songText = songName.getText();
         Assert.assertEquals(song, songText);
+
+
+
+
+
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#id")));
+
+
+
+        Wait<WebDriver> fluentWait = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(30))
+                .pollingEvery(Duration.ofMillis(50))
+                .ignoring(NoSuchElementException.class);
+        fluentWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#id")));
     }
 }

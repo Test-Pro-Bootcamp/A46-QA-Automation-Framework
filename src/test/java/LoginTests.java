@@ -1,4 +1,5 @@
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.openqa.selenium.By;
@@ -26,7 +27,7 @@ public class LoginTests extends BaseTest {
 
 
     @Test
-    public void inValidPasswordTest() throws InterruptedException {
+    public void inValidPasswordTest() {
 //step2. Enter Email
         enterEmail("demo@class.com");
 //step3. Enter Password
@@ -34,11 +35,11 @@ public class LoginTests extends BaseTest {
 //step4. Click submit
         clickSubmit();
 //Assertion - Compare expected and actual
-        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type='submit']")));
         Assert.assertEquals(driver.getCurrentUrl(), baseUrl);
     }
     @Test
-    public void changeUserName() throws InterruptedException {
+    public void changeUserName() {
 //step2. Enter Email
         enterEmail("demo@class.com");
 //step3. Enter Password
@@ -46,8 +47,7 @@ public class LoginTests extends BaseTest {
 //step4. Click submit
         clickSubmit();
 //step5. Click on Avatar
-        Thread.sleep(3000);
-        WebElement avatar = driver.findElement(By.cssSelector("span[class='name']"));
+        WebElement avatar = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("span[class='name']")));
         avatar.click();
 //Step6.Enter Name, Password, New Password, email
         enterText(By.id("inputProfileName"),getRandomString());
