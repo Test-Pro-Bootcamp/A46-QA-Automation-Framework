@@ -51,7 +51,6 @@ public class HomeWork16 extends BaseTest {
         submit.click();
 //assertion Compare expected and actual
         Assert.assertEquals(driver.getCurrentUrl(), url);
-        Thread.sleep(3000);
         WebElement avatar = driver.findElement(By.cssSelector("[class = 'avatar']"));
         Assert.assertTrue(avatar.isDisplayed());
           driver.quit();
