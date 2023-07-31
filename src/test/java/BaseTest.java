@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
@@ -34,6 +35,7 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         baseUrl = "https://qa.koel.app/";
         driver.get(baseUrl);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
 
     @AfterMethod
@@ -76,5 +78,17 @@ public class BaseTest {
         Faker faker = new Faker(new Locale("en-US"));
         String newName = faker.address().country();
         return newName;
+    }
+
+    public void provideEmail(String email) {
+        WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='email']")));
+        emailField.clear();
+        emailField.sendKeys(email);
+    }
+
+    public void providePassword(String password) {
+        WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='password']")));
+        passwordField.clear();
+        passwordField.sendKeys(password);
     }
 }
