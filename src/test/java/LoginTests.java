@@ -47,7 +47,8 @@ public class LoginTests extends BaseTest {
 //step4. Click submit
         clickSubmit();
 //step5. Click on Avatar
-        WebElement avatar = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("span[class='name']")));
+        WebElement avatar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#userBadge")));
+        wait.until(ExpectedConditions.elementToBeClickable(avatar));
         avatar.click();
 //Step6.Enter Name, Password, New Password, email
         enterText(By.id("inputProfileName"),getRandomString());
