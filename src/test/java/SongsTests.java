@@ -62,21 +62,5 @@ public class SongsTests extends BaseTest {
         WebElement songName = driver.findElement(By.cssSelector("#playlistWrapper .song-item .title"));
         String songText = songName.getText();
         Assert.assertEquals(song, songText);
-
-
-
-
-
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#id")));
-
-
-
-        Wait<WebDriver> fluentWait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(30))
-                .pollingEvery(Duration.ofMillis(50))
-                .ignoring(NoSuchElementException.class);
-        fluentWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#id")));
     }
 }
