@@ -42,8 +42,8 @@ public class Homework20 extends BaseTest{
     //step4
     public void clickSubmit() {
         WebElement submit = driver.findElement(By.cssSelector("[type ='submit']"));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[type ='submit']")));
         submit.click();
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[type ='submit']") ));
     }
     //step5
     public void choosePlaylist (String playlistName)  {
