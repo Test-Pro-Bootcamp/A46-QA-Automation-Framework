@@ -30,7 +30,7 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         //String baseUrl = "https://qa.koel.app/";
         driver.get(baseUrl);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(4));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
 
     @AfterMethod

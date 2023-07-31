@@ -3,6 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -52,7 +53,9 @@ public class LoginTests extends BaseTest {
     enterEmail(email);
     enterPassword(password);
     clickSubmit();
+    wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[type = 'submit']")));
     Assert.assertEquals(driver.getCurrentUrl(),"https://qa.koel.app/");
+
 
     }
     public void clickSubmit() {
