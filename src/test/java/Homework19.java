@@ -23,10 +23,10 @@ public class Homework19 extends BaseTest {
 
     }
     //step1
-    public void navigatetoPage()throws InterruptedException {
+    public void navigatetoPage() {
         String url = baseUrl;
         driver.get(baseUrl);
-        Thread.sleep(2000);
+
     }
         //step1
         //public void navigatetoPage() {
@@ -35,24 +35,24 @@ public class Homework19 extends BaseTest {
         //}
 
         //step2
-        public void provideEmail (String email) throws InterruptedException{
+        public void provideEmail (String email) {
             WebElement emailField = driver.findElement(By.cssSelector("[type ='email']"));
             emailField.click();
             emailField.sendKeys(email);
-            Thread.sleep(2000);
+
         }
         //step3
-        public void providePassword(String password) throws InterruptedException{
+        public void providePassword(String password) {
             WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
             passwordField.click();
             passwordField.sendKeys(password);
-            Thread.sleep(2000);
+
         }
         //step4
-        public void clickSubmit() throws InterruptedException {
+        public void clickSubmit()  {
             WebElement submit = driver.findElement(By.cssSelector("[type ='submit']"));
             submit.click();
-            Thread.sleep(2000);
+
         }
         //step5
         public void choosePlaylist (String playlistName) throws InterruptedException {
