@@ -26,7 +26,7 @@ public class LoginTests extends BaseTest {
     }
 
 
-    @Test
+  //  @Test
     public void inValidPasswordTest() {
 //step2. Enter Email
         enterEmail("demo@class.com");

@@ -34,3 +34,9 @@ task smoke(type: Test) {
         suites "src/test/resources/Smoke.xml"
     }
 }
+
+task debug(type: Test) {
+    useTestNG() {
+        suites "src/test/resources/debug.xml"
+    }
+}
