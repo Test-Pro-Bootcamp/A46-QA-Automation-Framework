@@ -8,6 +8,8 @@ import java.util.List;
 
 public abstract class BasePage {
 
+    //Base class for all tests
+
     WebDriver driver;
 
     public BasePage(WebDriver driver) {

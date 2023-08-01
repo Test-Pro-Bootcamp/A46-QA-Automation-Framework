@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 
 public class RenamePlayListTest extends BaseTest {
 
-    //Prerequisite - at least one user-created playlist
     String newPlaylistName = "Test Pro Edited Playlist";
 
     @Test
