@@ -5,12 +5,12 @@
 
     <test name="Smoke Tests" preserve-order="false">
         <classes>
-            <class name="LoginTests">
+            <class name="org.example.LoginTests">
                 <methods>
                     <include name="validLoginTest"/>
                 </methods>
             </class>
-            <!--            <class name="SongsTests"/>-->
+            <!--            <class name="org.example.SongsTests"/>-->
         </classes>
     </test>
 </suite>

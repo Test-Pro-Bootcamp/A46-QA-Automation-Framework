@@ -5,8 +5,8 @@
 
     <test name="Example Test" preserve-order="false">
         <classes>
-            <class name="LoginTests"/>
-            <class name="SongsTests"/>
+            <class name="org.example.LoginTests"/>
+            <class name="org.example.SongsTests"/>
         </classes>
     </test>
 </suite>
