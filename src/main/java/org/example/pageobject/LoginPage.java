@@ -1,17 +1,23 @@
 package org.example.pageobject;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import static org.example.utils.WaitUtil.waitUntilElementToBeClickable;
 import static org.example.utils.WaitUtil.waitUntilElementToBeVisible;
 
 public class LoginPage extends BasePage {
 
-    private static final By EMAIL_INPUT = By.cssSelector("[type='email']");
-    private static final By PASSWORD_INPUT = By.cssSelector("[type='password']");
-    private static final By SUBMIT_BUTTON = By.cssSelector("[type='submit']");
+    @FindBy(css = "[type='email']")
+    private WebElement emailField;
+//    driver.findElement(By.cssSelector("[type='email']"))
+
+    @FindBy(css = "[type='password']")
+    private WebElement passwordField;
+
+    @FindBy(css = "[type='submit']")
+    WebElement submitButton;
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -24,31 +30,28 @@ public class LoginPage extends BasePage {
         clickSubmit();
     }
 
-    public void enterEmail(String emailValue) {
-        enterText(EMAIL_INPUT, emailValue);
+    public LoginPage provideEmail(String email) {
+        waitUntilElementToBeVisible(driver, emailField);
+        enterEmail(email);
+        return this;
     }
 
-    public void enterPassword(String passwordValue) {
-        enterText(PASSWORD_INPUT, passwordValue);
+    private void enterEmail(String emailValue) {
+        enterText(emailField, emailValue);
+    }
+
+    private void enterPassword(String passwordValue) {
+        enterText(passwordField, passwordValue);
     }
 
     public void clickSubmit() {
-        waitUntilElementToBeClickable(getWebDriver(), findElement(SUBMIT_BUTTON));
-        WebElement submit = findElement(SUBMIT_BUTTON);
-        submit.click();
+        waitUntilElementToBeClickable(getWebDriver(), submitButton);
+        submitButton.click();
     }
 
-    public void provideEmail(String email) {
-        waitUntilElementToBeVisible(getWebDriver(), findElement(EMAIL_INPUT));
-        WebElement emailField = findElement(EMAIL_INPUT);
-        emailField.clear();
-        emailField.sendKeys(email);
-    }
-
-    public void providePassword(String password) {
-        waitUntilElementToBeVisible(getWebDriver(), findElement(PASSWORD_INPUT));
-        WebElement passwordField = findElement(PASSWORD_INPUT);
-        passwordField.clear();
-        passwordField.sendKeys(password);
+    public LoginPage providePassword(String password) {
+        waitUntilElementToBeVisible(getWebDriver(), passwordField);
+        enterPassword(password);
+        return this;
     }
 }

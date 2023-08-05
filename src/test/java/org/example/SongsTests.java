@@ -9,14 +9,14 @@ public class SongsTests extends BaseTest {
     public void addSongToPlaylist() {
         loginPage.login("demo@class.com", "te$t$tudent");
         String song = "Reactor";
-        homePage.searchSong(song);
-        homePage.clickViewAllButton();
-        homePage.clickFirstSongInTheList();
-        homePage.clickAddToButton();
+        homePage.searchSong(song)
+                .clickViewAllButton()
+                .clickFirstSongInTheList()
+                .clickAddToButton();
         String playlistName = generateRandomPlaylistName();
         System.out.println(playlistName);
-        homePage.fillNewPlayListName(playlistName);
-        homePage.clickSaveButton();
+        homePage.fillNewPlayListName(playlistName)
+                .clickSaveButton();
         Assert.assertTrue(homePage.isSuccessMessageDisplayed());
         Assert.assertEquals(homePage.getPlayListName(), playlistName);
         Assert.assertEquals(song, homePage.getSongName());
