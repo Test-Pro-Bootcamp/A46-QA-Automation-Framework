@@ -30,11 +30,6 @@ public class HomePage extends BasePage {
             findElement(playlistNameInput).sendKeys(playlistName);
             findElement(playlistNameInput).sendKeys(Keys.ENTER);
 
-
-            //playlistInputField.sendKeys((Keys.chord(Keys.COMMAND, "A", Keys.DELETE)));
-            //playlistInputField.sendKeys(playlistName);
-            //playlistInputField.sendKeys(Keys.ENTER);
-
         }
         public String getPlaylistName () {
             WebElement playlistName = driver.findElement(By.cssSelector(".playlist:nth-child(3)"));

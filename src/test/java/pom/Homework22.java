@@ -16,7 +16,7 @@ public class Homework22 extends BaseTest {
         loginPage.login();
         homePage.doubleClickFirstPlayList();
         homePage.enterPlaylistName(playlistName);
-        Assert.assertEquals(playlistName,getPlaylistName()); ;
+        Assert.assertEquals(playlistName,getPlaylistName());
 
         //String newPlaylistName = "Daria's Best Playlist 2";
         //@Test
