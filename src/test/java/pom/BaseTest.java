@@ -1,3 +1,5 @@
+package pom;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,35 +10,39 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
+import pom.HomePage;
+import pom.LoginPage;
 
 import java.time.Duration;
 
 public class BaseTest {
-    public static WebDriver driver;
-    public static WebDriverWait wait;
-    public static Actions actions;
-    public static String baseUrl;
-
-
+    public  WebDriver driver;
+    public  WebDriverWait wait;
+    public Actions actions;
+    public String baseUrl;
+    protected LoginPage loginPage ;
+    protected HomePage homePage;
     @BeforeSuite
-    static void setupClass() {
-
+    public void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
 
     @BeforeMethod
     @Parameters({"baseUrl"})
-
-    static void setupBrowser(String baseUrl) {
+    public void setupBrowser(String baseUrl) {
         ChromeOptions options = new ChromeOptions();
-        //driver = new ChromeDriver();
         options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--disable-notifications");
+        options.addArguments("--start-maximized");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        //String baseUrl = "https://qa.koel.app/";
+//         baseUrl = "https://qa.koel.app/";
         driver.get(baseUrl);
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         actions = new Actions(driver) ;
+        loginPage = new LoginPage(driver);
+        homePage = new HomePage(driver);
+
     }
     public void provideEmail (String email){
         WebElement emailField = driver.findElement(By.cssSelector("[type ='email']"));
@@ -56,6 +62,10 @@ public class BaseTest {
         WebElement submit = driver.findElement(By.cssSelector("[type ='submit']"));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[type ='submit']")));
         submit.click();
+    }
+    public String getPlaylistName(){
+        WebElement playlistElement = driver.findElement(By.cssSelector(".playlist:nth-child(3)") ) ;
+        return playlistElement.getText() ;
     }
 
     @AfterMethod

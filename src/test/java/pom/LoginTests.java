@@ -1,3 +1,5 @@
+package pom;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,6 +15,10 @@ public class LoginTests extends BaseTest {
     @Test
             public void loginValidEmailValidPassword() {
 
+        //loginPage.provideEmail("daria.pavlyuk@testpro.io");
+//loginPage.providePassword("te$T$tudent");
+//loginPage.clickSubmit();
+
         openloginUrl();
         String url = "https://qa.koel.app/";
         driver.get(url);
@@ -25,7 +31,7 @@ public class LoginTests extends BaseTest {
         passwordField.sendKeys("te$t$tudent");
 
         WebElement submitButton = driver.findElement(By.cssSelector("[type = 'submit']"));
-        submitButton.click();
+       submitButton.click();
 
     }
 
