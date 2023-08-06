@@ -12,9 +12,9 @@ public class HomePage extends BasePage {
     }
 
     String playlistName = "Daria46";
-    By userAvatarIcon = By.cssSelector("img.avatar");
-    By playlistNamefield = By.cssSelector("[name='name']");
-    By firstPlaylist = By.cssSelector(".playlist:nth-child(3)");
+     private By userAvatarIcon = By.cssSelector("img.avatar");
+    private By playlistNamefield = By.cssSelector("[name='name']");
+    private By firstPlaylist = By.cssSelector(".playlist:nth-child(3)");
     public boolean getUserAvatar() {
         return findElement((WebElement) userAvatarIcon).isDisplayed();
     }

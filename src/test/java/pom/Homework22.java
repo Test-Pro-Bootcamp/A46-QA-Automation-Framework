@@ -16,7 +16,7 @@ public class Homework22 extends BaseTest {
         loginPage.login();
         homePage.doubleClickFirstPlayList();
         homePage.enterPlaylistName(playlistName);
-        //Assert.assertTrue(playlistName,getPlaylistName()) ;
+        Assert.assertEquals(playlistName,getPlaylistName()); ;
 
         //String newPlaylistName = "Daria's Best Playlist 2";
         //@Test
@@ -27,7 +27,7 @@ public class Homework22 extends BaseTest {
         //choosePlaylist();
         // doubleClickChoosePlaylist();
         //enterNewPlaylistName();
-        //Assert.assertTrue(doesPlaylistExist()) ;
+       // Assert.assertTrue(doesPlaylistExist()) ;
 
         // }
         //public void choosePlaylist ()  {
@@ -50,9 +50,9 @@ public class Homework22 extends BaseTest {
 
     //  }
     //public boolean doesPlaylistExist() {
-       // WebElement playlistElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(), \"" + playlistName + "\")]")));
+        //WebElement playlistElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(), \"" + playlistName + "\")]")));
         //return playlistElement.isDisplayed();
-    //}
+   // }
 }
 
 
