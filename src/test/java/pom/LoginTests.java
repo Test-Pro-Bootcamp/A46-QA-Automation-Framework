@@ -12,8 +12,16 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 
 public class LoginTests extends BaseTest {
+    //Assert.assertEquals(driver.getCurrentUrl(),url);
+//}
     @Test
-            public void loginValidEmailValidPassword() {
+            public void  loginValidEmailValidPassword() {
+        LoginPage loginPage = new LoginPage(driver) ;
+        HomePage homePage = new HomePage(driver);
+loginPage.provideEmail("demo@class.com")
+        .providePassword("te$t$tudent")
+        .clickSubmitBtn() ;
+Assert.assertTrue(homePage.isAvatarDisplayed() );
 
         //loginPage.provideEmail("daria.pavlyuk@testpro.io");
 //loginPage.providePassword("te$T$tudent");
@@ -35,7 +43,7 @@ public class LoginTests extends BaseTest {
 
     }
 
-    public void openloginUrl() {
+    public static void openloginUrl() {
         driver.get("https://qa.koel.app/");
     }
 

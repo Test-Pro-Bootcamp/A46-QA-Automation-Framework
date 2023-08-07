@@ -16,12 +16,12 @@ import pom.LoginPage;
 import java.time.Duration;
 
 public class BaseTest {
-    public  WebDriver driver;
+    public static WebDriver driver;
     public  WebDriverWait wait;
     public Actions actions;
     public String baseUrl;
-    protected LoginPage loginPage ;
-    protected HomePage homePage;
+    protected static LoginPage loginPage ;
+    protected static HomePage homePage;
     @BeforeSuite
     public void setupClass() {
         WebDriverManager.chromedriver().setup();

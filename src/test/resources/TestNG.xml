@@ -7,7 +7,7 @@
         <classes>
 <!--            <class name="pom.LoginTests"/>-->
 <!--            <class name="pom.BaseTest"/>-->
-            <class name="pom.Homework22"/>
+            <class name="pom.Homework23"/>
         </classes>
     </test>
 </suite>
