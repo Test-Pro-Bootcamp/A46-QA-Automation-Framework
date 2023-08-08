@@ -24,6 +24,7 @@ import java.util.Locale;
 
 public abstract class BaseTest {
     public WebDriver driver;
+    private ThreadLocal<WebDriver> threadDriver;
     public String baseUrl;
     protected LoginPage loginPage;
     protected HomePage homePage;
