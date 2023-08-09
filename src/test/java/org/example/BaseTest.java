@@ -23,8 +23,8 @@ import java.time.Duration;
 import java.util.Locale;
 
 public abstract class BaseTest {
-    public WebDriver driver;
-    private ThreadLocal<WebDriver> threadDriver;
+    private static WebDriver driver;
+    private static final ThreadLocal<WebDriver> THREAD_LOCAL_DRIVER = new ThreadLocal<>();
     public String baseUrl;
     protected LoginPage loginPage;
     protected HomePage homePage;
@@ -34,16 +34,21 @@ public abstract class BaseTest {
     void setUpTest() throws MalformedURLException {
         driver = pickBrowser(System.getProperty("browser"));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver = new ChromeDriver(options);
         baseUrl = "https://qa.koel.app/";
-        driver.get(baseUrl);
-        loginPage = new LoginPage(driver);
-        homePage = new HomePage(driver);
-        profilePage = new ProfilePage(driver);
+        THREAD_LOCAL_DRIVER.set(driver);
+        THREAD_LOCAL_DRIVER.get().get(baseUrl);
+        THREAD_LOCAL_DRIVER.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    }
+
+    public WebDriver getWebDriver() {
+        return THREAD_LOCAL_DRIVER.get();
     }
 
     @AfterMethod
     void teardawn() {
-        driver.quit();
+        getWebDriver().close();
+        THREAD_LOCAL_DRIVER.remove();
     }
 
     public String generateRandomPlaylistName() {
