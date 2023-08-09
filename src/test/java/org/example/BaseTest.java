@@ -23,7 +23,6 @@ import java.time.Duration;
 import java.util.Locale;
 
 public abstract class BaseTest {
-    private ThreadLocal<WebDriver> threadDriver;
     private static WebDriver driver;
     private static final ThreadLocal<WebDriver> THREAD_LOCAL_DRIVER = new ThreadLocal<>();
     public String baseUrl;
