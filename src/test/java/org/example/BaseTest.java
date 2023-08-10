@@ -34,7 +34,10 @@ public abstract class BaseTest {
     void setUpTest() throws MalformedURLException {
         driver = pickBrowser(System.getProperty("browser"));
         baseUrl = "https://qa.koel.app/";
+
         THREAD_LOCAL_DRIVER.set(driver);
+        //don't use driver anymore
+
         THREAD_LOCAL_DRIVER.get().get(baseUrl);
         THREAD_LOCAL_DRIVER.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
