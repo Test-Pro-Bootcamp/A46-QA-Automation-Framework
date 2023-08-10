@@ -31,7 +31,7 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage provideEmail(String email) {
-        waitUntilElementToBeVisible(driver, emailField);
+        waitUntilElementToBeVisible(getWebDriver(), emailField);
         enterEmail(email);
         return this;
     }
