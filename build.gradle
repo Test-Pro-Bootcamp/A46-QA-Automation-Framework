@@ -29,3 +29,9 @@ task smoke(type: Test){
 
     }
 }
+task regression(type: Test) {
+    useTestNG() {
+        suites "src/test/resources/Regression.xml"
+        systemProperty "browser", System.getProperty("browser")
+    }
+}

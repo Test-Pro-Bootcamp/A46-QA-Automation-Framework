@@ -7,17 +7,24 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
 
 public class LoginTests extends BaseTest {
     //Assert.assertEquals(driver.getCurrentUrl(),url);
+    @BeforeMethod (dependsOnMethods = "setupBrowser")
+    public void createPages(){
+        loginPage = new LoginPage(getWebDriver() );
+        homePage = new HomePage(getWebDriver() );
+
+    }
 //}
     @Test
             public void  loginValidEmailValidPassword() {
-        LoginPage loginPage = new LoginPage(driver) ;
-        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(getWebDriver() ) ;
+        HomePage homePage = new HomePage(getWebDriver() );
 loginPage.provideEmail("demo@class.com")
         .providePassword("te$t$tudent")
         .clickSubmitBtn() ;
@@ -29,22 +36,22 @@ Assert.assertTrue(homePage.isAvatarDisplayed() );
 
         openloginUrl();
         String url = "https://qa.koel.app/";
-        driver.get(url);
-        WebElement emailField = driver.findElement(By.cssSelector("[type ='email']"));
+        getWebDriver().get(url);
+        WebElement emailField = getWebDriver().findElement(By.cssSelector("[type ='email']"));
         emailField.click();
         emailField.sendKeys("daria.pavlyuk@testpro.io");
 
-        WebElement passwordField = driver.findElement(By.cssSelector("[type = 'password']"));
+        WebElement passwordField = getWebDriver() .findElement(By.cssSelector("[type = 'password']"));
         passwordField.click();
         passwordField.sendKeys("te$t$tudent");
 
-        WebElement submitButton = driver.findElement(By.cssSelector("[type = 'submit']"));
+        WebElement submitButton = getWebDriver().findElement(By.cssSelector("[type = 'submit']"));
        submitButton.click();
 
     }
 
     public static void openloginUrl() {
-        driver.get("https://qa.koel.app/");
+        getWebDriver().get("https://qa.koel.app/");
     }
 
     @Test
@@ -68,23 +75,23 @@ Assert.assertTrue(homePage.isAvatarDisplayed() );
     enterPassword(password);
     clickSubmit();
     wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[type = 'submit']")));
-    Assert.assertEquals(driver.getCurrentUrl(),"https://qa.koel.app/");
+    Assert.assertEquals(getWebDriver().getCurrentUrl(),"https://qa.koel.app/");
 
 
     }
     public void clickSubmit() {
-        WebElement submitButton = driver.findElement(By.cssSelector("[type = 'submit']"));
+        WebElement submitButton = getWebDriver().findElement(By.cssSelector("[type = 'submit']"));
         submitButton.click();
     }
 
     public void enterPassword(String password) {
-        WebElement passwordField = driver.findElement(By.cssSelector("[type = 'password']"));
+        WebElement passwordField = getWebDriver().findElement(By.cssSelector("[type = 'password']"));
         passwordField.click();
         passwordField.sendKeys("te$t$tudent");
     }
 
     public void enterEmail(String email) {
-        WebElement emailField = driver.findElement(By.cssSelector("[type ='email']"));
+        WebElement emailField = getWebDriver().findElement(By.cssSelector("[type ='email']"));
         emailField.click();
         emailField.sendKeys("daria.pavlyuk@testpro.io");
     }

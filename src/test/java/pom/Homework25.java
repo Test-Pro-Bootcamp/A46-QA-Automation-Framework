@@ -1,23 +1,17 @@
 package pom;
 
-import org.testng.annotations.Test;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-
-public class Homework23 extends BaseTest{
+public class Homework25 extends BaseTest{
     @Test
     public void renamePlaylist(){
         String playlistName = "Daria46";
         LoginPage loginPage = new LoginPage(getWebDriver());
         HomePage homePage = new HomePage(getWebDriver());
         loginPage.provideEmail("daria.pavlyuk@testpro.io")
-                 .providePassword("te$t$tudent")
-                 .clickSubmitBtn();
+                .providePassword("te$t$tudent")
+                .clickSubmitBtn();
         homePage.doubleClickFirstPlayList()
                 .enterPlaylistName(playlistName );
 
@@ -26,4 +20,7 @@ public class Homework23 extends BaseTest{
 
     }
 
+
 }
+
+

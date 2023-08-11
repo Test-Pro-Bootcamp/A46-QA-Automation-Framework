@@ -9,7 +9,7 @@ public class Homework17 extends BaseTest {
         public void addSongtoPlaylist() {
 
             String url = "https://qa.koel.app/";
-            driver.get(url);
+            getWebDriver().get(url);
             //String newSongAddedNotification = "Added 1 song into";
             navigatetoPage();
             provideEmail("daria.pavlyuk@testpro.io");
@@ -35,23 +35,23 @@ public class Homework17 extends BaseTest {
     //}
 
     public void choosePlaylist(String playlistName) {
-        WebElement playlistNameElement = driver.findElement(By.cssSelector("#playlists > ul > li:nth-child(12) > a"));
+        WebElement playlistNameElement = getWebDriver() .findElement(By.cssSelector("#playlists > ul > li:nth-child(12) > a"));
         playlistNameElement.click();
     }
 
     public void clickSubmit() {
-        WebElement submit = driver.findElement(By.cssSelector("[type = 'submit']"));
+        WebElement submit = getWebDriver() .findElement(By.cssSelector("[type = 'submit']"));
         submit.click();
     }
 
     public void providePassword(String password) {
-        WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
+        WebElement passwordField = getWebDriver() .findElement(By.cssSelector("[type='password']"));
            passwordField.click();
            passwordField.sendKeys(password);
     }
 
     public void provideEmail(String email) {
-        WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
+        WebElement emailField = getWebDriver() .findElement(By.cssSelector("[type='email']"));
         emailField.click();
         emailField.sendKeys(email);
 
@@ -59,28 +59,28 @@ public class Homework17 extends BaseTest {
 
     public void navigatetoPage() {
         String url = "https://qa.koel.app/";
-        driver.get(url);
+        getWebDriver() .get(url);
     }
 
 
     public void clickAddButton() {
-            WebElement addTo = driver.findElement(By.cssSelector("button.btn-add-to") );
+            WebElement addTo = getWebDriver() .findElement(By.cssSelector("button.btn-add-to") );
             addTo.click();
     }
 
     public void selectFirstSongResult() {
-            WebElement viewAllFirstSongResult= driver.findElement(By.cssSelector("section#songResultsWrapper tr.song-item td.title"));
+            WebElement viewAllFirstSongResult= getWebDriver() .findElement(By.cssSelector("section#songResultsWrapper tr.song-item td.title"));
             viewAllFirstSongResult.click();
 
     }
 
     public void viewAllSearchResults() {
-            WebElement viewAllSearchResults = driver.findElement(By.cssSelector("div.results section.songs h1 button") ) ;
+            WebElement viewAllSearchResults = getWebDriver() .findElement(By.cssSelector("div.results section.songs h1 button") ) ;
             viewAllSearchResults.click();
     }
 
     public void searchSong (String songTitleKeyword){
-            WebElement searchField = driver.findElement(By.cssSelector("div#searchForm input[type=search]") );
+            WebElement searchField = getWebDriver() .findElement(By.cssSelector("div#searchForm input[type=search]") );
             searchField.sendKeys(songTitleKeyword );
 
 
