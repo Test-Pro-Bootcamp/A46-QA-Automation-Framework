@@ -98,6 +98,9 @@ public abstract class BaseTest {
         String authKey = "od7Dpt7s6GOhymogN1LAlpyjV9Vc3zFZKCZuA15QdaOaFw7lFw";
         String hub = "@hub.lambdatest.com/wd/hub";
 
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-notifications");
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platform", "Windows 10");
         capabilities.setCapability("browserName", "Chrome");
@@ -106,6 +109,7 @@ public abstract class BaseTest {
         capabilities.setCapability("build", "TestNG With Java");
         capabilities.setCapability("name", this.getClass().getName());
         capabilities.setCapability("plugin", "git-testng");
+        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 
         return new RemoteWebDriver(new URL("https://" + userName + ":" + authKey + hub), capabilities);
     }
