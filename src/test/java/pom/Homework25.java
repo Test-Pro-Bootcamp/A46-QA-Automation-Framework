@@ -7,8 +7,8 @@ public class Homework25 extends BaseTest{
     @Test
     public void renamePlaylist(){
         String playlistName = "Daria46";
-        LoginPage loginPage = new LoginPage(getWebDriver());
-        HomePage homePage = new HomePage(getWebDriver());
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver );
         loginPage.provideEmail("daria.pavlyuk@testpro.io")
                 .providePassword("te$t$tudent")
                 .clickSubmitBtn();

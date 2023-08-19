@@ -25,11 +25,10 @@ import java.net.URL;
 import java.time.Duration;
 
 public abstract class BaseTest {
-    private static WebDriver driver;
-    private static final ThreadLocal<WebDriver> THREAD_LOCAL_DRIVER = new ThreadLocal<>();
+    public WebDriver  driver;
     public WebDriverWait wait;
     public Actions actions;
-    public String baseUrl;
+    public String url = null;
     protected static LoginPage loginPage;
     protected static HomePage homePage;
     //@BeforeSuite
@@ -46,16 +45,13 @@ public abstract class BaseTest {
         //   options.addArguments("--start-maximized");
         // driver = new ChromeDriver(options);
         driver = pickBrowser(System.getProperty("browser"));
-        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-//         baseUrl = "https://qa.koel.app/";
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        url = baseUrl;//pass parameter baseUrl
         driver.get(baseUrl);
-        //wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         actions = new Actions(driver);
-        loginPage = new LoginPage(driver);
-        homePage = new HomePage(driver);
-        THREAD_LOCAL_DRIVER.set(driver);
-        THREAD_LOCAL_DRIVER.get().get(baseUrl);
-        THREAD_LOCAL_DRIVER.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(5) );
+//        loginPage = new LoginPage(driver);
+//        homePage = new HomePage(driver);
 
     }
 
@@ -134,11 +130,9 @@ public abstract class BaseTest {
         WebElement playlistElement = driver.findElement(By.cssSelector(".playlist:nth-child(3)"));
         return playlistElement.getText();
     }
-public static WebDriver getWebDriver(){return THREAD_LOCAL_DRIVER.get();}
     @AfterMethod
-    public void tearDown() {
-        getWebDriver().close();
-        THREAD_LOCAL_DRIVER.remove();
+    public void closeBrowser(){
+        driver.quit();
     }
 
     @DataProvider(name = "invalidLoginProviders")

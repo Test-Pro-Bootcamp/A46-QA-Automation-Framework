@@ -4,10 +4,11 @@
 <suite name="TestNG" parallel="methods" thread-count="2" >
 
     <test name="Example Test" preserve-order="false">
+        <parameter name="baseUrl" value="https://qa.koel.app/" />
         <classes>
             <class name="pom.LoginTests"/>
             <class name="pom.BaseTest"/>
-            <class name="pom.Homework25"/>
+            <class name="Homework29"/>
         </classes>
     </test>
 </suite>

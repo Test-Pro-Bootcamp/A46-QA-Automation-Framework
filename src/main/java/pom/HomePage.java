@@ -51,10 +51,10 @@ public HomePage doubleClickPlaylist(){
             findElement(popUpMessage);
             return findElement(firstPlaylist).getText() ;
         }
-       // public boolean doesPlaylistExist (String playlistName){
-            //WebElement playlistElement = driver.findElement(By.xpath("//a[text()='" + playlistName + "']"));
-            //return playlistElement.isDisplayed();
-        //}
+        public boolean doesPlaylistExist (String playlistName){
+            WebElement playlistElement = driver.findElement(By.xpath("//a[text()='" + playlistName + "']"));
+            return playlistElement.isDisplayed();
+        }
 public boolean isAvatarDisplayed(){
     return avatarIcon.isDisplayed() ;
 }

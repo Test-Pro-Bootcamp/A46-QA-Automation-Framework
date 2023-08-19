@@ -3,13 +3,11 @@
 
 <suite name="Smoke">
 
-    <test name="pom.Homework18" preserve-order="false">
+    <test name="LoginTests" preserve-order="false">
+        <parameter name="baseUrl" value="https://qa.koel.app/"/>
         <classes>
-            <class name="pom.Homework18">
-               <methods>
-                <include name="playSong"/>
-               </methods>
-            </class>
+            <class name="Homework29"/>
+                <class name = "pom.LoginTests"/>
         </classes>
     </test>
 </suite>

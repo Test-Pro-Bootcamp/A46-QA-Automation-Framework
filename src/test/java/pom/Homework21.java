@@ -26,7 +26,7 @@ public class Homework21 extends BaseTest{
 
 
     public void choosePlaylist ()  {
-        WebElement playlistNameElement = getWebDriver() .findElement(By.cssSelector("#playlists > ul > li:nth-child(12) > a"));
+        WebElement playlistNameElement = driver.findElement(By.cssSelector("#playlists > ul > li:nth-child(12) > a"));
         playlistNameElement.click();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#playlists > ul > li:nth-child(12) > a") ) );
     }
@@ -38,7 +38,7 @@ public class Homework21 extends BaseTest{
 
     }
     public void enterNewPlaylistName(){
-        WebElement playlistInputField = getWebDriver() .findElement(By.cssSelector("input[name='name']") );
+        WebElement playlistInputField = driver.findElement(By.cssSelector("input[name='name']") );
         playlistInputField.sendKeys((Keys.chord(Keys.COMMAND , "A", Keys.DELETE)));
         playlistInputField.sendKeys(newPlaylistName);//let's use newPlaylistName variable we declared in line 11
         playlistInputField.sendKeys(Keys.ENTER );
