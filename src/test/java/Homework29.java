@@ -10,10 +10,19 @@ import pom.LoginPage;
 import java.net.MalformedURLException;
 
 public class Homework29 extends BaseTest {
-    String newPlaylistName = "Daria46";
+    String newPlaylistName = "TestProList";
     @Test
     public void renamePlaylist(){
+        String playlistName = "Daria46";
         LoginPage loginPage  = new LoginPage(driver) ;
+        HomePage homePage = new HomePage(driver);
+        loginPage.provideEmail("daria.pavlyuk@testpro.io")
+                .providePassword("te$t$tudent")
+                .clickSubmitBtn() ;
+        homePage.doubleClickPlaylist() ;
+        homePage.enterPlaylistName(newPlaylistName);
+        Assert.assertEquals(homePage.getPlaylistName(),newPlaylistName ) ;
+
 
     }
     @Test
@@ -40,5 +49,6 @@ public class Homework29 extends BaseTest {
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("li a.songs") ));
         (driver).findElement(By.cssSelector("li a.songs") ).click() ;
+       Assert.assertTrue(homePage.doesAllSongsExist("all songs") );
     }
 }

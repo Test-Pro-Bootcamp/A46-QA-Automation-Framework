@@ -55,6 +55,10 @@ public HomePage doubleClickPlaylist(){
             WebElement playlistElement = driver.findElement(By.xpath("//a[text()='" + playlistName + "']"));
             return playlistElement.isDisplayed();
         }
+        public boolean doesAllSongsExist (String allSongs){
+    WebElement playlistAllsongs = driver.findElement(By.cssSelector("li a.songs") );
+    return playlistAllsongs.isDisplayed() ;
+        }
 public boolean isAvatarDisplayed(){
     return avatarIcon.isDisplayed() ;
 }
