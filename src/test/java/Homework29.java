@@ -38,8 +38,7 @@ public class Homework29 extends BaseTest {
                 .providePassword("te$t$tudent")
                 .clickSubmitBtn() ;
 
-//        this action should be a method which will be in HomePage
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("li a.songs") ));
-//        getWebDriver() .findElement(By.cssSelector("li a.songs") ).click() ;
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("li a.songs") ));
+        (driver).findElement(By.cssSelector("li a.songs") ).click() ;
     }
 }
